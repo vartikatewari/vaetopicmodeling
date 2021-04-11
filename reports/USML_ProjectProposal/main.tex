@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{url}
+
+
+\title{Exploring Variational Auto-Encoders for Topic Modelling}
+
+\author{Apoorva Jarmale,Kaavya Gowthaman,Oj Sindher,Saarang Pande,Vartika Tewari}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\cite{20news}
+
+\section{Introduction}
+
+Topic models are among the most widely used models for learning unsupervised representations of text, with hundreds of different model variants in the literature. However a major challenge is that any change to the topic model requires mathematically deriving a new inference algorithm. This means that applying topic models and developing new models is accompanied by the high computational cost of computing the posterior distribution. Therefore a large body of work has considered approximate inference methods, with the most popular methods being mean field methods, and particularly methods based on collapsed Gibbs sampling. Both mean-field and collapsed Gibbs have the drawback that applying them to new topic models, even if there is only a small change to the modeling assumptions, requires re-deriving the inference methods, which can be mathematically arduous and time consuming, and limits the ability of practitioners to freely explore the space of different modeling assumptions.  \\
+
+\section{Proposed Project}
+%You will need to write a proposal (maximum length is 2 pages) to address the following high-level questions:
+In this project we are going to implement one of the state of the art VAE models: ProdLDA\cite{prodlda}  and will compare it with basic topic modelling techniques like LDA\cite{blei2003latent}. 
+
+%•\textbf{ What type of problem you will seek to answer?} \newline
+\subsection{Proposed Techniques }
+
+%•\textbf{ To solve the problem, what methods are you going to consider?} \\
+Autoencoding variational Bayes (AEVB) is an effective choice for topic models, because it trains an inference network i.e a neural network that directly maps a document to an approximate posterior distribution,without the need to run further variational updates.This is impressive because in topic models, we expect that a small change in the document will produce only a small change in topics. This is exactly the type of mapping that a universal function approximator like a neural network should be good at representing. 
+
+\subsubsection{ProdLDA\cite{prodlda}}
+We would be implementing the ProdLDA\cite{prodlda} paper which has a very effective AEVB inference method. The model described in the paper promises advantages like topic coherence, computational efficiency, and a Black box medthodology i.e does not require rigorous mathematical derivations to handle changes in the model, and can be easily applied to a wide range of topic models.\\
+
+We also hope to try and implement the NVDM\cite{nvdm} paper for comparison if time permits.
+%•\textbf{ Which dataset(s) will you use in your project?}
+\subsection{Data}
+The 20 Newsgroups\cite{20news} data set is a collection of approximately 20,000 newsgroup documents, partitioned (nearly) evenly across 20 different newsgroups. The 20 newsgroups collection has become a popular data set for experiments in text applications of machine learning techniques.The data is organized into 20 different newsgroups, each corresponding to a different topic. Some of the newsgroups are very closely related to each other (e.g. comp.sys.ibm.pc.hardware / comp.sys.mac.hardware), while others are highly unrelated (e.g misc.forsale / soc.religion.christian). We believe this would be the perfect dataset to work on for Topic Modelling as well.
+%We hope to extend our work on more datasets like \href{https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf}{"RCV1"} as well if time permits.
+
+
+\medskip
+
+\printbibliography
+
+\end{document}
